@@ -35,10 +35,6 @@ cdx<-function(targ="list",newPath=FALSE) {
 	  d=dplyr::distinct(d)
     d=na.omit(d)
 	  names(d)=c("targ","path")
-    #rewrites old macros
-	  loc=which(d$targ==targ)
-    if (length(loc)>1) d=d[-loc[1],]
-    
 	  save(d,file=paste0(cpath,"cdxdirs.rda"))
 	}
 }
