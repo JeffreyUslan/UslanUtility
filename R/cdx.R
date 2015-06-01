@@ -32,7 +32,7 @@ cdx<-function(targ="list",newPath=FALSE) {
     bind_vec=data.frame(targ,as.character(choose.dir()))
 	  names(bind_vec)=c("targ","path")
     d=rbind(d,bind_vec)
-	  d=distinct(d)
+	  d=dplyr::distinct(d)
     d=na.omit(d)
 	  names(d)=c("targ","path")
     #rewrites old macros
