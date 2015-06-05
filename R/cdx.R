@@ -1,15 +1,16 @@
 #' Changes directory based on an external reference document
 #'
 #' @param targ A projectory reference id.
+#' @param newPath If TRUE will prompt to select a folder to assign to targ.
 #' @examples
-#' cdx("NILM")
-#' cdx("rbsaSM2")
+#' cdx("test",newPath=TRUE)
+#' cdx("test")
 #'
 #'
 
 cdx<-function(targ="list",newPath=FALSE) {
   require("dplyr")
-  cpath="C:\Program Files\R"
+  cpath="C:\\Program Files\\R"
   
 	if (!newPath){
 	  load(paste0(cpath,"cdxdirs.rda"))
@@ -32,7 +33,7 @@ cdx<-function(targ="list",newPath=FALSE) {
     bind_vec=data.frame(targ,as.character(choose.dir()))
 	  names(bind_vec)=c("targ","path")
     d=rbind(d,bind_vec)
-	  d=dplyr::distinct(d)
+	  d=distinct(d)
     d=na.omit(d)
 	  names(d)=c("targ","path")
 	  save(d,file=paste0(cpath,"cdxdirs.rda"))
